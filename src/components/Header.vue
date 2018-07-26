@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav>
-      <a href="#" @click.prevent="resetSections">
+      <a href="#" @click.prevent="RESET_SECTION">
         <img src="../assets/logo.png"/>
       </a>
 
@@ -32,21 +32,22 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapMutations } from 'vuex'
+
 export default {
   name: 'Header',
-  props: {
-    designActive: {
-      type: Boolean,
-      reqired: true
-    },
-    resetSections: {
-      type: Function,
-      reqired: true
-    },
-    isMobile: {
-      type: Boolean,
-      reqired: true
-    }
+  computed: {
+    ...mapState({
+      designActive: state => state.general.designActive,
+    }),
+    ...mapGetters([
+      'isMobile'
+    ])
+  },
+  methods: {
+    ...mapMutations([
+      'RESET_SECTION'
+    ])
   }
 }
 </script>

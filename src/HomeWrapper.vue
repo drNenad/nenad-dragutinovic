@@ -1,26 +1,10 @@
 <template>
   <div class="home-wrapper">
-    <Header
-      :designActive="designActive"
-      :resetSections="resetSections"
-      :isMobile="isMobile"
-    />
+    <Header/>
 
-    <DesignSection
-      :designWidth="designWidth"
-      :toggleDesign="toggleDesign"
-      :designActive="designActive"
-      :codeActive="codeActive"
-      :isMobile="isMobile"
-    />
+    <DesignSection/>
 
-    <CodeSection
-      :developWidth="developWidth"
-      :toggleDevelop="toggleDevelop"
-      :designActive="designActive"
-      :codeActive="codeActive"
-      :isMobile="isMobile"
-    />
+    <CodeSection/>
       
     <img src="./assets/personal-image.png" v-if="!isMobile" class="personal-image" v-bind:class="{ fadeout: designActive || codeActive }"/>
   </div>
@@ -30,6 +14,7 @@
 import Header from './components/Header'
 import CodeSection from './sections/code/_main'
 import DesignSection from './sections/design/_main'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'HomeWrapper',
@@ -38,54 +23,31 @@ export default {
     CodeSection,
     DesignSection
   },
-  data: function () {
-    return {
-      designActive: false,
-      codeActive: false,
-      windowWidth: window.innerWidth
-    }
-  },
   computed: {
-    isMobile: function () {
-      return this.windowWidth <= 900
-    },
-    designWidth: function () {
-      return this.designActive ? 93
-            : this.codeActive ? 7
-            : this.isMobile ? 100
-            : 50
-    },
-    developWidth: function () {
-      return this.codeActive ? 93
-            : this.designActive ? 7
-            : this.isMobile ? 100
-            : 50
-    }
+    ...mapState({
+      designActive: state => state.general.designActive,
+      codeActive: state => state.general.codeActive,
+      windowWidth: state => state.general.windowWidth
+    }),
+    ...mapGetters([
+      'isMobile'
+    ])
   },
   methods: {
-    toggleDesign: function () {
-      this.designActive = true
-      this.codeActive = false
-    },
-    toggleDevelop: function () {
-      this.designActive = false
-      this.codeActive = true
-    },
-    resetSections: function () {
-      this.designActive = false
-      this.codeActive = false
-    }
+    ...mapMutations([
+      'GET_WINDOW_WIDTH'
+    ])
   },
   created() {
     this.$nextTick(() => {
       window.addEventListener('resize', () => {
-        this.windowWidth = window.innerWidth
+        this.GET_WINDOW_WIDTH()
       })
     })
   },
   watch: {
     windowWidth() {
-      this.windowWidth = window.innerWidth
+      this.GET_WINDOW_WIDTH()
     }
   }
 }

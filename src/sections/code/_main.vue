@@ -1,12 +1,12 @@
 <template>
-  <section class="section-wrapper code" :style="[isMobile ? {height: developWidth + '%'} : {width: developWidth + '%'}]">
+  <section class="section-wrapper code" :style="[isMobile ? {height: codeWidth + '%'} : {width: codeWidth + '%'}]">
     <div class="section-toggle" v-if="!codeActive">
       <h1 v-if="!designActive">&lt;/code&gt;</h1>
-      <button @click.prevent="toggleDevelop" :class="{ button_rotate: designActive && !isMobile }">{{ !designActive ? 'Discover More' : 'Code' }}</button>
+      <button @click.prevent="TOGGLE_CODE" :class="{ button_rotate: designActive && !isMobile }">{{ !designActive ? 'Discover More' : 'Code' }}</button>
     </div>
 
     <div class="section-content" v-if="codeActive">
-      Code CV
+      Code CV - To be done...
     </div>
 
     <LettersBackground
@@ -19,55 +19,28 @@
 
 <script>
 import LettersBackground from '../../components/LettersBackground'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'CodeSection',
   components: {
     LettersBackground
   },
-  props: {
-    developWidth: {
-      type: Number,
-      required: true
-    },
-    toggleDevelop: {
-      type: Function,
-      required: true
-    },
-    designActive: {
-      type: Boolean,
-      required: true
-    },
-    codeActive: {
-      type: Boolean,
-      required: true
-    },
-    isMobile: {
-      type: Boolean,
-      required: true
-    }
+  computed: {
+    ...mapState({
+      codeBackground: state => state.general.codeBackground,
+      designActive: state => state.general.designActive,
+      codeActive: state => state.general.codeActive
+    }),
+    ...mapGetters([
+      'isMobile',
+      'codeWidth'
+    ])
   },
-  data: function () {
-    return {
-      codeBackground: [
-        {
-          letter: 'c',
-          positionStart: 0
-        },
-        {
-          letter: 'o',
-          positionStart: 20
-        },
-        {
-          letter: 'd',
-          positionStart: 40
-        },
-        {
-          letter: 'e',
-          positionStart: 60
-        }
-      ]
-    }
+  methods: {
+    ...mapMutations([
+      'TOGGLE_CODE'
+    ])
   }
 }
 </script>

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import HomeWrapper from './HomeWrapper.vue'
+import HomeWrapper from './sections/HomeWrapper.vue'
 
 export default {
   name: 'app',

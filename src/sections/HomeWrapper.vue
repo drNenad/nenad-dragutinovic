@@ -6,14 +6,14 @@
 
     <CodeSection/>
       
-    <img src="./assets/personal-image.png" v-if="!isMobile" class="personal-image" v-bind:class="{ fadeout: designActive || codeActive }"/>
+    <img src="../assets/personal-image.png" v-if="!isMobile" class="personal-image" v-bind:class="{ fadeout: designActive || codeActive }"/>
   </div>
 </template>
 
 <script>
-import Header from './components/Header'
-import CodeSection from './sections/code/_main'
-import DesignSection from './sections/design/_main'
+import Header from '../components/Header'
+import CodeSection from './code/_main'
+import DesignSection from './design/_main'
 import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {

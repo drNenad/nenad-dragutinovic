@@ -1,3 +1,11 @@
+/**
+ * Return Object with random Style that will be used for background letters at design and code sections.
+ * @param {index} We need different index for different letter so they appear in the screen in different of the screens
+ * and not be in the same spots.
+ * @param {type} We need a type for different font color.
+ * @returns {Object}
+ */
+
 const getRandomStyle = (function () {
     return {
       getRandomStyle: getRandomStyle

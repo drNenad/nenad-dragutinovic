@@ -42,9 +42,7 @@ const getRandomStyle = (function () {
     }
 
     function getFontColor(type) {
-        let color = type === 'design' ? '#ebebeb' : '#272319'
-
-        return color
+        return type === 'design' ? '#ebebeb' : '#272319'
     }
 
     function getRandomStyle (index, type) {

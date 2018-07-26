@@ -74,8 +74,21 @@ button:hover {
   background: #b99458;
   color: #2c3e50;
 }
-
 .button_rotate {
   transform: rotate(90deg);
+}
+
+@media only screen and (max-width: 900px) {
+  h1 {
+    font-size: 40px;
+    margin-bottom: 70px;
+  }
+  .section-wrapper {
+    width: 100%;
+    height: 50%;
+  }
+  button {
+    padding: 8px;
+  }
 }
 </style>

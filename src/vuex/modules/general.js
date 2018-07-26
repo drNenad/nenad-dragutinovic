@@ -64,6 +64,9 @@ export default {
           : state.isMobile ? 100
           : 50
     },
+    showMobileDesignButton: (state, getters) => {
+      return state.codeActive && getters.isMobile
+    }
   },
   mutations: {
     TOGGLE_DESIGN (state) {

@@ -2,7 +2,7 @@
   <section class="section-wrapper design" :style="[isMobile ? {height: designWidth + '%'} : {width: designWidth + '%'}]">
     <div class="section-toggle" v-if="!designActive">
       <h1 v-if="!codeActive">Design</h1>
-      <button @click.prevent="TOGGLE_DESIGN" :class="{ button_rotate: codeActive && !isMobile }">{{ !codeActive ? 'Discover More' : 'Design' }}</button>
+      <button @click.prevent="TOGGLE_DESIGN" :class="{ button_rotate: codeActive && !isMobile }" v-if="!showMobileDesignButton">{{ !codeActive ? 'Discover More' : 'Design' }}</button>
     </div>
 
     <div class="section-content" v-if="designActive">
@@ -34,7 +34,8 @@ export default {
     }),
     ...mapGetters([
       'isMobile',
-      'designWidth'
+      'designWidth',
+      'showMobileDesignButton'
     ])
   },
   methods: {
@@ -73,5 +74,19 @@ button:hover {
 
 .button_rotate {
   transform: rotate(-90deg);
+}
+
+@media only screen and (max-width: 900px) {
+  h1 {
+    font-size: 40px;
+    margin-bottom: 70px;
+  }
+  .section-wrapper {
+    width: 100%;
+    height: 50%;
+  }
+  button {
+    padding: 8px;
+  }
 }
 </style>

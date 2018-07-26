@@ -1,4 +1,4 @@
-const randomStyle = (function () {
+const getRandomStyle = (function () {
     return {
       getRandomStyle: getRandomStyle
     }
@@ -52,4 +52,4 @@ const randomStyle = (function () {
     }
 }())
 
-export default randomStyle
+export default getRandomStyle

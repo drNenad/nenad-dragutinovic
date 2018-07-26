@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HomeWrapper/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HomeWrapper from './HomeWrapper.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HomeWrapper
   }
 }
 </script>
@@ -23,6 +22,21 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+::selection {
+  background: #b99458; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #b99458; /* Gecko Browsers */
 }
 </style>
